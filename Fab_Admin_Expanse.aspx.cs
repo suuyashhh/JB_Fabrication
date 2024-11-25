@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace WebApplication1
 {
@@ -16,12 +17,7 @@ namespace WebApplication1
             //        Response.Redirect("Login.aspx?type=Feeds");
             //    }
 
-                //    if (!IsPostBack)
-                //    {
-                //        BindFeedDropdown();
-                //        //feedDate.Text = GetCurrentTime().ToString("yyyy-MM-dd");
-                //        //DateTime dt = GetCurrentTime().Date;
-                //    }
+           
         }
 
         //protected DateTime GetCurrentTime()
@@ -33,31 +29,32 @@ namespace WebApplication1
 
         protected void btnSubmitFeed_Click(object sender, EventArgs e)
         {
-            //con.Close();
-            //SqlCommand cmd = new SqlCommand("INSERT INTO FabExpanse (Ename,price,Edate) VALUES (@exname,@rs,@dt)", con);
+            con.Close();
+            SqlCommand cmd = new SqlCommand("INSERT INTO Fab_Expanse (Exp_name,Exp_price,date,User_id) VALUES (@exname,@rs,@dt,@ui)", con);
 
-            ////cmd.Parameters.AddWithValue("@id", Session["userId"]);
-            //cmd.Parameters.AddWithValue("@exname", Ename.Text);
-            //cmd.Parameters.AddWithValue("@rs", Eprice.Text);
+            //cmd.Parameters.AddWithValue("@id", Session["userId"]);
+            cmd.Parameters.AddWithValue("@exname", Ename.Text);
+            cmd.Parameters.AddWithValue("@rs", Eprice.Text);
+            cmd.Parameters.AddWithValue("@ui", 1);
+            
+            DateTime selectedDate;
+            if (DateTime.TryParse(feedDate.Text, out selectedDate))
+            {
+                cmd.Parameters.AddWithValue("@dt", selectedDate);
+            }
+            else
+            {
+                Response.Write("<script>alert('Invalid date format!');</script>");
+                return;
+            }
 
-            //DateTime selectedDate;
-            //if (DateTime.TryParse(feedDate.Text, out selectedDate))
-            //{
-            //    cmd.Parameters.AddWithValue("@dt", selectedDate);
-            //}
-            //else
-            //{
-            //    Response.Write("<script>alert('Invalid date format!');</script>");
-            //    return;
-            //}
-
-            //con.Open();
-            //cmd.ExecuteNonQuery();
-            //con.Close();
-            //Eprice.Text = "";
-            //Ename.Text = "";
-            //feedDate.Text = "";
-            //this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "swal('Record saved successfully','','success');", true);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+            Eprice.Text = "";
+            Ename.Text = "";
+            feedDate.Text = "";
+            this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "swal('Record saved successfully','','success');", true);
         }
     }
 }

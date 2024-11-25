@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -23,21 +23,21 @@ namespace WebApplication1
             //}
         }
 
-        
+
 
         protected void BtnSubmitBill_Click(object sender, EventArgs e)
         {
             //con.Close();
-            //SqlCommand cmd = new SqlCommand("insert into FabProfit (Pname,Pprice,Pdate) values (@pname,@rs,@dt)", con);
+            //SqlCommand cmd = new SqlCommand("insert into Fab_Profit (Pro_namev,Pro_price,date) values (@pname,@rs,@dt)", con);
 
 
             ////cmd.Parameters.AddWithValue("@id", Session["userId"]);
             //cmd.Parameters.AddWithValue("@pname", Cname.Text);
-            //cmd.Parameters.AddWithValue("@rs", billPrice.Text);
+            //cmd.Parameters.AddWithValue("@rs", billPriceee.Text);
 
 
             //DateTime selectedDate;
-            //if (DateTime.TryParse(billDate.Text, out selectedDate))
+            //if (DateTime.TryParse(billDateee.Text, out selectedDate))
             //{
             //    cmd.Parameters.AddWithValue("@dt", selectedDate);
             //}
@@ -53,26 +53,12 @@ namespace WebApplication1
             //cmd.ExecuteNonQuery();
 
 
-            //billPrice.Text = "";
-            //billDate.Text = "";
+            //billPriceee.Text = "";
+            //billDateee.Text = "";
+            //Cname.Text = "";
             //this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "swal('Record saved successfully','','success');", true);
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

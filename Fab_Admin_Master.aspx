@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Fab_Admin_Master.aspx.cs" Inherits="WebApplication1.AnimalsName" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Fab_Admin_Master.aspx.cs" Inherits="WebApplication1.AnimalsName" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -144,26 +144,44 @@
 
         <div class="content container-fluid">
             <div class="row">
-                <!-- Animal Name Section -->
-                <div class="col-md-6">
-                    <h2>Helper Master</h2>
-                    <div class="form-group">
-                        <label for="animalName" class="form-label">Helper Name*</label>
-                        <asp:TextBox ID="animalName" CssClass="form-control" runat="server" onkeyup="checkInput(this)"></asp:TextBox>
-                    </div>
-                    <asp:Button runat="server" ID="btnSubmitAnimal" Text="Submit" OnClientClick="return valid()" OnClick="btnSubmitAnimal_Click" CssClass="btn-submit" />
-                </div>
-                <div class="col-md-6 grid-view">
+
+                <div class="col-md-12 grid-view">
                     <h2>Manage Helper</h2>
                     <div class="table-responsive">
-                        <asp:GridView runat="server" ID="gridAnimal" DataKeyNames="animal_id" AutoGenerateColumns="false" OnRowEditing="gridAnimal_RowEditing" OnRowCancelingEdit="gridAnimal_RowCancelingEdit" OnRowUpdating="gridAnimal_RowUpdating" OnRowDeleting="gridAnimal_RowDeleting" CssClass="table " Style="text-align: center; margin-top: 40px; border: 1px solid #10a37f; border-radius: 6px;">
+                        <asp:GridView runat="server" ID="gridAnimal" DataKeyNames="User_id" AutoGenerateColumns="false" OnRowEditing="gridAnimal_RowEditing" OnRowCancelingEdit="gridAnimal_RowCancelingEdit" OnRowUpdating="gridAnimal_RowUpdating" OnRowDeleting="gridAnimal_RowDeleting" CssClass="table " Style="text-align: center; margin-top: 40px; border: 1px solid #10a37f; border-radius: 6px;">
                             <Columns>
-                                <asp:TemplateField HeaderText="Name:">
+                                <asp:TemplateField HeaderText="Helper Name:">
                                     <ItemTemplate>
-                                        <asp:Label runat="server" ID="lblname" Text='<%# Eval("animal_name") %>'></asp:Label>
+                                        <asp:Label runat="server" ID="lblFeedN" Text='<%# Eval("User_name") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox runat="server" ID="txtname" Text='<%# Eval("animal_name") %>'></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="txtFeedN" Text='<%# Eval("User_name") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Contact:">
+                                    <ItemTemplate>
+                                        <asp:Label runat="server" ID="lblQty" Text='<%# Eval("User_contact") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox runat="server" ID="txtQty" Text='<%# Eval("User_contact") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Password:">
+                                    <ItemTemplate>
+                                        <asp:Label runat="server" ID="lblQty" Text='<%# Eval("User_pass") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox runat="server" ID="txtQty" Text='<%# Eval("User_pass") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Salary:">
+                                    <ItemTemplate>
+                                        <asp:Label runat="server" ID="lblOFprice" Text='<%# Eval("User_salary","{0:N0}") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:TextBox runat="server" ID="txtOFprice" Text='<%# Eval("User_salary") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
 
@@ -183,24 +201,38 @@
                         <asp:DropDownList ID="ddlfeedname" runat="server" CssClass="form-control form-control-lg" DataTextField="feed_name" DataValueField="feed_name"></asp:DropDownList>
                     </div>
                     <div class="form-group">
+                        <label for="date" class="form-label">Select Date*</label>
+                        <asp:TextBox ID="c" CssClass="form-control form-control-lg" runat="server" TextMode="Date"></asp:TextBox>
+                    </div>
+
+                    <div class="form-group">
                         <label for="feedName" class="form-label">Advanse Money*</label>
                         <asp:TextBox ID="feedName" CssClass="form-control" runat="server" TextMode="Number" onkeyup="checkInput(this)"></asp:TextBox>
                     </div>
                     <asp:Button ID="btnSubmitFeed" Text="Submit" OnClick="btnSubmitFeed_Click" OnClientClick="return validF()" CssClass="btn-submit" runat="server" />
                 </div>
                 <div class="col-md-6 grid-view">
-                    <h2>Manage Feeds</h2>
+                    <h2>Manage Advance Payment</h2>
                     <div class="table-responsive">
-                        <asp:GridView runat="server" ID="gridFeed" DataKeyNames="feed_id" AutoGenerateColumns="false" OnRowEditing="gridFeed_RowEditing" OnRowCancelingEdit="gridFeed_RowCancelingEdit" OnRowUpdating="gridFeed_RowUpdating" OnRowDeleting="gridFeed_RowDeleting" CssClass="table " Style="text-align: center; border: 1px solid #10a37f; border-radius: 6px; margin-top: 40px">
+                        <asp:GridView runat="server" ID="gridFeed" DataKeyNames="User_id" AutoGenerateColumns="false" OnRowEditing="gridFeed_RowEditing" OnRowCancelingEdit="gridFeed_RowCancelingEdit" OnRowUpdating="gridFeed_RowUpdating" OnRowDeleting="gridFeed_RowDeleting" CssClass="table " Style="text-align: center; border: 1px solid #10a37f; border-radius: 6px; margin-top: 40px">
                             <Columns>
-                                <asp:TemplateField HeaderText="Name:">
+                                <asp:TemplateField HeaderText="Helper Name:">
                                     <ItemTemplate>
-                                        <asp:Label runat="server" ID="lblname" Text='<%# Eval("feed_name") %>'></asp:Label>
+                                        <asp:Label runat="server" ID="lblname" Text='<%# Eval("User_name") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="Advance:">
+                                    <ItemTemplate>
+                                        <asp:Label runat="server" ID="lbladv" Text='<%# Eval("User_advance") %>'></asp:Label>
                                     </ItemTemplate>
                                     <EditItemTemplate>
-                                        <asp:TextBox runat="server" ID="txtname" Text='<%# Eval("feed_name") %>'></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="txtadv" Text='<%# Eval("User_advance") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                 </asp:TemplateField>
+
+                                <asp:BoundField DataField="date" HeaderText="Date" SortExpression="ColumnName" DataFormatString="{0:dd-MMM-yyyy}"></asp:BoundField>
+
 
                                 <asp:CommandField ButtonType="Button" ShowEditButton="true" ShowDeleteButton="true" ItemStyle-Width="190" />
                             </Columns>
@@ -222,29 +254,17 @@
     </script>
 
 
-    <script>
-        function valid() {
-            var name = document.getElementById('<%= this.animalName.ClientID %>').value;
 
-
-            if (name == "") {
-                swal("Please fill all details to proceed..!", "", "error");
-                return false;
-            }
-
-
-            return true;
-        }
-    </script>
 
 
     <script>
         function validF() {
             var name = document.getElementById('<%= this.feedName.ClientID %>').value;
-             var money = document.getElementById('<%= this.ddlfeedname.ClientID %>').value;
-            
+            var money = document.getElementById('<%= this.ddlfeedname.ClientID %>').value;
+            var date = document.getElementById('<%= this.c.ClientID %>').value;
 
-            if (name == "" || money == "") {
+
+            if (name == "" || money == "" || date == "") {
                 swal("Please fill all details to proceed..!", "", "error");
                 return false;
             }

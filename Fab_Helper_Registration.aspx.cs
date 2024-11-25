@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -17,16 +17,10 @@ namespace WebApplication1
 
         }
 
-        //protected DateTime GetCurrentTime()
-        //{
-        //    DateTime serverTime = DateTime.Now;
-        //    DateTime _localTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(serverTime, TimeZoneInfo.Local.Id, "India Standard Time");
-        //    return _localTime;
-        //}
         //protected void btnRegister_Click(object sender, EventArgs e)
         //{
         //    con.Close();
-        //    SqlCommand cmdcheck = new SqlCommand("select * from Users where contact=@contact", con);
+        //    SqlCommand cmdcheck = new SqlCommand("select * from Fab_Users where contact=@contact", con);
         //    cmdcheck.Parameters.AddWithValue("@contact", UserContact.Text);
         //    con.Open();
         //    SqlDataReader reader = cmdcheck.ExecuteReader();
@@ -39,18 +33,15 @@ namespace WebApplication1
         //    {
         //        con.Close();
 
-        //        SqlCommand cmd = new SqlCommand("insert into Users values (@name,@pass,@contact,@email,@dt)", con);
+        //        SqlCommand cmd = new SqlCommand("insert into Fab_Users (User_name,User_contact,User_pass,) values (@name,@contact,@pass)", con);
         //        cmd.Parameters.AddWithValue("@name", txtname.Text);
         //        cmd.Parameters.AddWithValue("@pass", UserPassword.Text);
         //        cmd.Parameters.AddWithValue("@contact", UserContact.Text);
-        //        cmd.Parameters.AddWithValue("@email", txtemail.Text);
-        //        cmd.Parameters.AddWithValue("@dt", GetCurrentTime());
 
         //        con.Open();
         //        cmd.ExecuteNonQuery();
 
         //        txtname.Text = "";
-        //        txtemail.Text = "";
         //        UserContact.Text = "";
         //        UserPassword.Text = "";
         //        txtConPass.Text = "";

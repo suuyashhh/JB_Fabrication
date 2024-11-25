@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
@@ -33,8 +33,7 @@ namespace WebApplication1
         //protected DataSet gvuser()
         //{
         //    con.Close();
-        //    SqlCommand sql = new SqlCommand("select * from AnimalsName where user_id = @userId", con);
-        //    sql.Parameters.AddWithValue("@userId", Session["userId"]);
+        //    SqlCommand sql = new SqlCommand("select * from Fab_Users ", con);
         //    con.Open();
         //    DataSet ds = new DataSet();
         //    SqlDataAdapter adapter = new SqlDataAdapter(sql);
@@ -45,8 +44,7 @@ namespace WebApplication1
         //protected DataSet gvfeed()
         //{
         //    con.Close();
-        //    SqlCommand sql = new SqlCommand("select * from Feeds Where user_id = @userId", con);
-        //    sql.Parameters.AddWithValue("@userId", Session["userId"]);
+        //    SqlCommand sql = new SqlCommand("select * from Fab_Users", con);
         //    con.Open();
         //    DataSet ds = new DataSet();
         //    SqlDataAdapter adapter = new SqlDataAdapter(sql);
@@ -54,20 +52,7 @@ namespace WebApplication1
         //    return ds;
         //}
 
-        protected void btnSubmitAnimal_Click(object sender, EventArgs e)
-        {
-            //    con.Close();
-            //    SqlCommand cmd = new SqlCommand("insert into AnimalsName (animal_name, user_id) values (@name,@id)", con);
-            //    cmd.Parameters.AddWithValue("@name", animalName.Text);           
-            //    cmd.Parameters.AddWithValue("@id", Session["userId"]);
-            //    con.Open();
-            //    cmd.ExecuteNonQuery();
-            //    gridAnimal.DataSource = gvuser();
-            //    gridAnimal.DataBind();
-
-            //    animalName.Text = "";
-            //    this.ClientScript.RegisterStartupScript(this.GetType(), "SweetAlert", "swal('Cattle saved successfully','','success');", true);
-        }
+       
 
         protected void gridAnimal_RowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -89,8 +74,11 @@ namespace WebApplication1
             //string name = (row.FindControl("txtname") as TextBox).Text;
 
             //con.Close();
-            //SqlCommand cmd = new SqlCommand("update AnimalsName set animal_name=@name where animal_id=@srno", con);
+            //SqlCommand cmd = new SqlCommand("update Fab_Users set User_name=@name, User_contact=@contact, User_pass=@pass,User_salary=@sal where User_id=@srno", con);
             //cmd.Parameters.AddWithValue("@name", name);
+            //cmd.Parameters.AddWithValue("@contact", name);
+            //cmd.Parameters.AddWithValue("@pass", name);
+            //cmd.Parameters.AddWithValue("@sal", name);
             //cmd.Parameters.AddWithValue("@srno", gridAnimal.DataKeys[e.RowIndex].Value);
             //con.Open();
             //cmd.ExecuteNonQuery();
@@ -102,7 +90,7 @@ namespace WebApplication1
         protected void gridAnimal_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             //con.Close();
-            //SqlCommand sql = new SqlCommand("delete from AnimalsName where animal_id='" + gridAnimal.DataKeys[e.RowIndex].Value + "' ", con);
+            //SqlCommand sql = new SqlCommand("delete from Fab_Users where User_id='" + gridAnimal.DataKeys[e.RowIndex].Value + "' ", con);
             //con.Open();
             //sql.ExecuteNonQuery();
             //gridAnimal.EditIndex = -1;
@@ -113,9 +101,10 @@ namespace WebApplication1
         protected void btnSubmitFeed_Click(object sender, EventArgs e)
         {
             //con.Close();
-            //SqlCommand cmd = new SqlCommand("insert into Feeds (feed_name, user_id) values (@name,@id)", con);
-            //cmd.Parameters.AddWithValue("@name", feedName.Text);
-            //cmd.Parameters.AddWithValue("@id", Session["userId"]);
+            //SqlCommand cmd = new SqlCommand("insert into Fab_Users (User_name, User_advance, date) values (@name,@advc,@dt)", con);
+            //cmd.Parameters.AddWithValue("@name", feedName.Text); 
+            //cmd.Parameters.AddWithValue("@advc", feedName.Text); 
+            //cmd.Parameters.AddWithValue("@dt", feedName.Text);
             //con.Open();
             //cmd.ExecuteNonQuery();
             //gridFeed.DataSource = gvfeed();
@@ -146,8 +135,9 @@ namespace WebApplication1
             //string name = (row.FindControl("txtname") as TextBox).Text;
 
             //con.Close();
-            //SqlCommand cmd = new SqlCommand("update Feeds set feed_name=@name where feed_id=@srno", con);
-            //cmd.Parameters.AddWithValue("@name", name);
+            //SqlCommand cmd = new SqlCommand("update Fab_Users set User_advance=@adv,date=@dt where User_id=@srno", con);
+            //cmd.Parameters.AddWithValue("@adv", txtadv.Text);
+            //cmd.Parameters.AddWithValue("@dt", DateTime().Now);
             //cmd.Parameters.AddWithValue("@srno", gridFeed.DataKeys[e.RowIndex].Value);
             //con.Open();
             //cmd.ExecuteNonQuery();
@@ -159,7 +149,7 @@ namespace WebApplication1
         protected void gridFeed_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             //con.Close();
-            //SqlCommand sql = new SqlCommand("delete from Feeds where feed_id='" + gridFeed.DataKeys[e.RowIndex].Value + "' ", con);
+            //SqlCommand sql = new SqlCommand("delete from Fab_Users where User_id='" + gridFeed.DataKeys[e.RowIndex].Value + "' ", con);
             //con.Open();
             //sql.ExecuteNonQuery();
             //gridFeed.EditIndex = -1;

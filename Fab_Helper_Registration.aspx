@@ -178,7 +178,7 @@
 
                 }
             }
-           
+
             if (conf != pass) {
 
                 swal("Please Enter Valid Confirm Password", "", "error");
